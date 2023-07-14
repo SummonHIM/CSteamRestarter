@@ -1,4 +1,4 @@
-#include <locale.h>
+#include <libintl.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -96,8 +96,6 @@ char *getConfig(const char *filename, const char *key) {
     return NULL;
 }
 
-char *translation(const char *str) { return getConfig("locales\\zh_CN.lang", str); }
-
 int isProcessRunning(const char *processName) {
 #ifdef _WIN32
     HANDLE snapshot = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0);
@@ -166,13 +164,13 @@ void terminateProcess(const char *processName) {
 
     hSnapshot = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0);
     if (hSnapshot == INVALID_HANDLE_VALUE) {
-        printf("\t- %s\n", translation("Error: Failed to create process snapshot."));
+        printf("\t- %s\n", gettext("Error: Failed to create process snapshot."));
         return;
     }
 
     pe32.dwSize = sizeof(PROCESSENTRY32);
     if (!Process32First(hSnapshot, &pe32)) {
-        printf("\t- %s\n", translation("Error: Failed to get process information."));
+        printf("\t- %s\n", gettext("Error: Failed to get process information."));
         CloseHandle(hSnapshot);
         return;
     }
@@ -189,12 +187,12 @@ void terminateProcess(const char *processName) {
         if (hProcess != NULL) {
             TerminateProcess(hProcess, 0);
             CloseHandle(hProcess);
-            printf("\t- %s\n", translation("Process terminated successfully."));
+            printf("\t- %s\n", gettext("Process terminated successfully."));
         } else {
-            printf("\t- %s\n", translation("Error: Failed to open process."));
+            printf("\t- %s\n", gettext("Error: Failed to open process."));
         }
     } else {
-        printf("\t- %s\n", translation("Error: Process not found."));
+        printf("\t- %s\n", gettext("Error: Process not found."));
     }
 
     CloseHandle(hSnapshot);

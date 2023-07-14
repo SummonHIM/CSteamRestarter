@@ -3,6 +3,9 @@
         "*.pot": "po",
         "stdlib.h": "c",
         "string.h": "c",
-        "locale.h": "c"
+        "locale.h": "c",
+        "libintl.h": "c",
+        "dirent.h": "c",
+        "stdio.h": "c"
     }
 }
