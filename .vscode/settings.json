@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "*.pot": "po",
+        "stdlib.h": "c",
+        "string.h": "c",
+        "locale.h": "c"
+    }
+}
