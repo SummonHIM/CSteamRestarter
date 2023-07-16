@@ -2,7 +2,7 @@
 
 char *VERSION = "1.0";
 char *PROCESSNAME = "steam.exe";
-char *PROCESSPATH;
+char *PROCESSPATH = "C:\\Program Files (x86)\\Steam\\steam.exe";
 char *PROCESSARG;
 
 int loadConfig() {
@@ -36,7 +36,7 @@ int writeConfig() {
     strcpy(filePath, configPath);
     strcat(filePath, configTmp);
 
-    fp = fopen(filePath, "w+");
+    fp = fopen(filePath, "w");
     if (fp == NULL) {
         printf("%s\n", gettext("Failed to create file!"));
         free(filePath);
@@ -54,12 +54,17 @@ int writeConfig() {
 }
 
 int startSteam() {
-    printf("%s", gettext("Starting steam..."));
+    char *fullCommand;
+    printf("%s...", gettext("Starting steam"));
 
-    char *fullCommand = malloc(strlen(PROCESSPATH) + strlen(" ") + strlen(PROCESSARG) + 1);
-    strcpy(fullCommand, PROCESSPATH);
-    strcat(fullCommand, " ");
-    strcat(fullCommand, PROCESSARG);
+    if (PROCESSARG != NULL) {
+        fullCommand = malloc(strlen(PROCESSPATH) + strlen(" ") + strlen(PROCESSARG) + 1);
+        strcpy(fullCommand, PROCESSPATH);
+        strcat(fullCommand, " ");
+        strcat(fullCommand, PROCESSARG);
+    } else {
+        fullCommand = PROCESSPATH;
+    }
 
     STARTUPINFO si = {0};
     si.cb = sizeof(si);
@@ -79,20 +84,25 @@ int startSteam() {
 }
 
 int stopSteam() {
-    printf("%s", gettext("Terminating steam..."));
+    printf("\n%s...", gettext("Terminating steam"));
     if (isProcessRunning(PROCESSNAME)) {
         terminateProcess(PROCESSNAME);
     } else {
         printf("\t- %s\n", gettext("Failed to force terminate steam. Is your steam client still running?"));
     }
+    return 0;
 }
 
 int restartSteam() {
     stopSteam();
     startSteam();
+    return 0;
 }
 
-int flushDNS() { system("ipconfig /flushdns"); }
+int flushDNS() {
+    system("ipconfig /flushdns");
+    return 0;
+}
 
 int options() {
     char optionsChoice, tmpProcessPath[256], tmpProcessArg[256];
@@ -109,12 +119,12 @@ int options() {
         optionsChoice = mgetch();
         switch (optionsChoice) {
         case '1':
-            printf("%s", gettext("New path: "));
+            printf("%s ", gettext("New path:"));
             fgets(tmpProcessPath, sizeof(tmpProcessPath), stdin);
             PROCESSPATH = tmpProcessPath;
             break;
         case '2':
-            printf("%s", gettext("New parameters: "));
+            printf("%s ", gettext("New parameters:"));
             fgets(tmpProcessArg, sizeof(tmpProcessArg), stdin);
             PROCESSARG = tmpProcessArg;
             break;
@@ -144,13 +154,14 @@ int about() {
 
 int main() {
     char mainChoice, regPathChoice;
-    // setlocale(LC_ALL, "");
+    setlocale(LC_ALL, "");
     bindtextdomain("csteamrestarter", "locale");
     textdomain("csteamrestarter");
     while (1) {
         loadConfig();
         DWORD fileAttributes = GetFileAttributes(removeQuotes(PROCESSPATH));
         if (fileAttributes = INVALID_FILE_ATTRIBUTES && (fileAttributes & FILE_ATTRIBUTE_DIRECTORY)) {
+            clear_screen();
             char readProcessPath[256];
             printf("%s\n", gettext("Steam client path not found! Please enter the path manually:"));
             fgets(readProcessPath, sizeof(readProcessPath), stdin);
@@ -171,18 +182,15 @@ int main() {
             switch (mainChoice) {
             case '1':
                 stopSteam();
-                printf("%s\n", gettext("Press any key to return..."));
-                mgetch();
+                pause();
                 break;
             case '2':
                 restartSteam();
-                printf("%s\n", gettext("Press any key to return..."));
-                mgetch();
+                pause();
                 break;
             case '3':
                 flushDNS();
-                printf("%s\n", gettext("Press any key to return..."));
-                mgetch();
+                pause();
                 break;
             case '4':
                 options();
@@ -190,8 +198,7 @@ int main() {
             case '5':
                 clear_screen();
                 about();
-                printf("%s\n", gettext("Press any key to return..."));
-                mgetch();
+                pause();
                 break;
             case '6':
                 clear_screen();
@@ -199,8 +206,7 @@ int main() {
                 break;
             default:
                 printf("%s %c.\n", gettext("Unknown option"), mainChoice);
-                printf("%s\n", gettext("Press any key to return..."));
-                mgetch();
+                pause();
                 break;
             }
         }

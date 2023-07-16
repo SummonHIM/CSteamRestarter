@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: CSteamRestarter\n"
-"POT-Creation-Date: 2023-07-14 19:17+0800\n"
-"PO-Revision-Date: 2023-07-14 19:23+0800\n"
+"POT-Creation-Date: 2023-07-16 17:13+0800\n"
+"PO-Revision-Date: 2023-07-16 17:15+0800\n"
 "Last-Translator: SummonHIM <summonhim@qq.com>\n"
 "Language-Team: summonhim@qq.com\n"
 "Language: zh_CN\n"
@@ -19,123 +19,122 @@ msgstr ""
 msgid "Failed to create file!"
 msgstr "无法创建文件！"
 
-#: csteamrestarter.c:57
-msgid "Starting steam..."
-msgstr "Starting steam..."
+#: csteamrestarter.c:58
+msgid "Starting steam"
+msgstr "正在启动 Steam"
 
-#: csteamrestarter.c:69
+#: csteamrestarter.c:74
 msgid "Process started successfully."
 msgstr "启动进程成功。"
 
-#: csteamrestarter.c:73
+#: csteamrestarter.c:78
 msgid "Failed to start the process."
 msgstr "启动进程失败。"
 
-#: csteamrestarter.c:82
-msgid "Terminating steam..."
-msgstr "Terminating steam..."
+#: csteamrestarter.c:87
+msgid "Terminating steam"
+msgstr "正在 Steam"
 
-#: csteamrestarter.c:86
+#: csteamrestarter.c:91
 msgid "Failed to force terminate steam. Is your steam client still running?"
 msgstr "无法强制终止 Steam。请检查您的 Steam 客户端是否正在运行？"
 
-#: csteamrestarter.c:101
+#: csteamrestarter.c:111
 msgid "Options"
 msgstr "选项"
 
-#: csteamrestarter.c:103
+#: csteamrestarter.c:113
 msgid "Steam Path"
 msgstr "Steam 路径"
 
-#: csteamrestarter.c:105
+#: csteamrestarter.c:115
 msgid "Start parameters"
 msgstr "启动参数"
 
-#: csteamrestarter.c:107
+#: csteamrestarter.c:117
 msgid "Save & exit"
 msgstr "保存并退出"
 
-#: csteamrestarter.c:108
+#: csteamrestarter.c:118
 msgid "Unsave & exit"
 msgstr "撤销并退出"
 
-#: csteamrestarter.c:112
+#: csteamrestarter.c:122
 msgid "New path:"
-msgstr "New path:"
+msgstr "新路径："
 
-#: csteamrestarter.c:117
+#: csteamrestarter.c:127
 msgid "New parameters:"
-msgstr "New parameters:"
+msgstr "新参数："
 
-#: csteamrestarter.c:134 csteamrestarter.c:162
+#: csteamrestarter.c:144 csteamrestarter.c:173
 msgid "Steam Restarter"
 msgstr "一键强制关闭 Steam 客户端"
 
-#: csteamrestarter.c:136
+#: csteamrestarter.c:146
 msgid "[Version]"
 msgstr "[版本]"
 
-#: csteamrestarter.c:138
+#: csteamrestarter.c:148
 msgid "[GitHub]"
 msgstr "[GitHub]"
 
-#: csteamrestarter.c:140
+#: csteamrestarter.c:150
 msgid "Copyright 2023 SummonHIM."
 msgstr "Copyright 2023 SummonHIM."
 
-#: csteamrestarter.c:155
+#: csteamrestarter.c:166
 msgid "Steam client path not found! Please enter the path manually:"
 msgstr "未找到 Steam 客户端！请手动输入其路径："
 
-#: csteamrestarter.c:164
+#: csteamrestarter.c:175
 msgid "[1] Force terminate Steam"
 msgstr "[1] 强制停止 Steam"
 
-#: csteamrestarter.c:165
+#: csteamrestarter.c:176
 msgid "[2] Force restart Steam"
 msgstr "[2] 强制重启 Steam"
 
-#: csteamrestarter.c:166
+#: csteamrestarter.c:177
 msgid "[3] Purges DNS cache"
 msgstr "[3] 清理系统 DNS 缓存"
 
-#: csteamrestarter.c:167
+#: csteamrestarter.c:178
 msgid "[4] Options"
 msgstr "[4] 选项"
 
-#: csteamrestarter.c:168
+#: csteamrestarter.c:179
 msgid "[5] About"
 msgstr "[5] 关于"
 
-#: csteamrestarter.c:169
+#: csteamrestarter.c:180
 msgid "[6] Exit"
 msgstr "[6] 退出"
 
-#: csteamrestarter.c:174 csteamrestarter.c:179 csteamrestarter.c:184
-#: csteamrestarter.c:193 csteamrestarter.c:202
-msgid "Press any key to return..."
-msgstr "Press any key to return..."
-
-#: csteamrestarter.c:201
+#: csteamrestarter.c:208
 msgid "Unknown option"
-msgstr "Unknown option"
+msgstr "未知选项"
 
-#: csteamrestarter.h:168
+#: csteamrestarter.h:169
 msgid "Error: Failed to create process snapshot."
 msgstr "错误：无法添加进程快照。"
 
-#: csteamrestarter.h:174
+#: csteamrestarter.h:175
 msgid "Error: Failed to get process information."
 msgstr "错误：无法获取进程信息。"
 
-#: csteamrestarter.h:191
+#: csteamrestarter.h:192
 msgid "Process terminated successfully."
 msgstr "终止进程成功。"
 
-#: csteamrestarter.h:193
+#: csteamrestarter.h:194
 msgid "Error: Failed to open process."
 msgstr "错误：无法打开进程。"
 
-#: csteamrestarter.h:196
+#: csteamrestarter.h:197
 msgid "Error: Process not found."
 msgstr "错误：进程未找到。"
+
+#: csteamrestarter.h:216
+msgid "Press any key to return"
+msgstr "按任意键返回"

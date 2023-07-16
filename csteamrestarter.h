@@ -24,11 +24,13 @@ int getScreenSize() {
     GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &csbi);
     WINDOW_COL = csbi.srWindow.Right - csbi.srWindow.Left + 1;
     WINDOW_ROW = csbi.srWindow.Bottom - csbi.srWindow.Top + 1;
+    return 0;
 #elif __linux__
     struct winsize ws;
     ioctl(STDOUT_FILENO, TIOCGWINSZ, &ws);
     WINDOW_COL = ws.ws_col;
     WINDOW_ROW = ws.ws_row;
+    return 0;
 #else
 #error "Unsupported operating system."
 #endif
@@ -208,4 +210,10 @@ char *removeQuotes(char *str) {
         str[len - 2] = '\0';
     }
     return str;
+}
+
+int pause() {
+    printf("%s...\n", gettext("Press any key to return"));
+    mgetch();
+    return 0;
 }
