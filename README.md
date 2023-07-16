@@ -1,5 +1,5 @@
 # CSteamRestarter
-使用 ChatGPT 乱搞的 C 语言版本 SteamRestarter
+使用 ChatGPT 乱搞的 C 语言版本 [SteamRestarter](https://gist.github.com/SummonHIM/1cd129bcbc72e18faac2b72455967b32)
 
 ## 下载
 [Release](https://github.com/SummonHIM/CSteamRestarter/releases/latest)
@@ -10,7 +10,7 @@
 gcc -fdiagnostics-color=always -static csteamrestarter.c -o Output\CSteamRestarter.exe -lintl -liconv
 ```
 ### MSVC
-你需要安装 GnuWin32 Gettext 来编译
+你需要安装 [GnuWin32 Gettext](https://gnuwin32.sourceforge.net/packages/gettext.htm) 来编译
 ```
 cl.exe /Zi /EHsc /nologo /FeOutput\CSteamRestarter.exe /MT csteamrestarter.c -I Path\to\gettext\include -link Path\to\gettext\libintl.lib
 ```
